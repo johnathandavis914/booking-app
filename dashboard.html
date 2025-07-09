@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user }}</h1>
+    <a href="/logout">Logout</a> |
+    <a href="/customers">Customers</a>
+    <h2>Bookings</h2>
+    <ul>
+        {% for b in bookings %}
+            <li>
+                {{ b.trip_date }} - {{ b.booking_name }} - {{ b.pickup_address }} → {{ b.driver_bus }} (${{ b.rate }})
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
