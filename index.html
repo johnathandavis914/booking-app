@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Form</title>
+</head>
+<body>
+    <h1>Make a Booking</h1>
+    <form id="bookingForm">
+        <input name="booking_name" placeholder="Name" required><br>
+        <input name="phone" placeholder="Phone Number" required><br>
+        <input name="email" type="email" placeholder="Email" required><br>
+        <input name="billing_address" placeholder="Billing Address" required><br>
+        <input name="pickup_address" placeholder="Pickup Address" required><br>
+        <input name="trip_date" type="date" required><br>
+        <input name="pickup_time" type="time" required><br>
+        <input name="return_time" type="time" required><br>
+        <input name="trip_type" placeholder="Type of Trip" required><br>
+        <input name="passengers" type="number" min="1" required placeholder="Number of Passengers"><br>
+        <input name="rate" placeholder="Rate" required><br>
+        <input name="driver_bus" placeholder="Driver and Bus Info" required><br>
+        <textarea name="notes" placeholder="Additional Notes"></textarea><br>
+        <button type="submit">Submit Booking</button>
+    </form>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+
+            const response = await fetch('/book', {
+                method: 'POST',
+                body: data
+            });
+
+            const result = await response.json();
+            alert(result.message);
+            if (result.success) {
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>
