@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customers</title>
+</head>
+<body>
+    <h1>Customers</h1>
+    <a href="/add-customer">Add New Customer</a> |
+    <a href="/dashboard">Dashboard</a> |
+    <a href="/logout">Logout</a>
+    <ul>
+        {% for c in customers %}
+            <li>{{ c.name }} – {{ c.email }} – {{ c.phone }} – {{ c.address }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
